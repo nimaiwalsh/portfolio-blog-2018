@@ -4,9 +4,13 @@
   "version": "1.0.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "emotion": "^9.1.0",
+    "emotion-server": "^9.1.0",
     "gatsby": "^1.9.241",
     "gatsby-link": "^1.6.39",
+    "gatsby-plugin-emotion": "^1.1.16",
     "gatsby-plugin-react-helmet": "^2.0.8",
+    "react-emotion": "^9.1.0",
     "react-helmet": "^5.2.0"
   },
   "keywords": [
