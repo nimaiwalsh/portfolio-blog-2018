@@ -21,21 +21,18 @@ const HeaderContainer = styled('div')`
   padding: 1.45rem 1.0875rem;
 `;
 
-const Header = () => (
+const Header = ({data}) => (
 
   <HeaderWrapper>
     <HeaderContainer>
       <h1 style={{ margin: 0 }}>
         <Link
           to="/"
-          style={{
-            color: 'white',
-            textDecoration: 'none',
-          }}
         >
           <img src={logo} alt="Nimai Walsh Logo" />
         </Link>
       </h1>
+      <p>{data.site.siteMetadata.title}</p>
       <nav>
         <ul>
           <li>

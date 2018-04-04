@@ -1,6 +1,7 @@
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby Default Starter',
+    title: 'Nimai Walsh - Web Developer',
+    desc: 'Portfolio and Blog for Nimai Walsh - Web Developer',
   },
   plugins: ['gatsby-plugin-react-helmet', 'gatsby-plugin-emotion'],
 };

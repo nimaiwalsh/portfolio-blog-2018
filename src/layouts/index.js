@@ -1,20 +1,20 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import Helmet from 'react-helmet'
+import React from 'react';
+import PropTypes from 'prop-types';
+import Helmet from 'react-helmet';
 
-import Header from '../components/Header'
-import './index.css'
+import Header from '../components/Header';
+import './index.css';
 
-const TemplateWrapper = ({ children }) => (
+const TemplateWrapper = ({ children, data }) => (
   <div>
     <Helmet
-      title="Gatsby Default Starter"
+      title="Nimai Walsh - Web Developer"
       meta={[
-        { name: 'description', content: 'Sample' },
-        { name: 'keywords', content: 'sample, something' },
+        { name: 'description', content: 'Discover the Portfolio and Blog of Nimai Walsh. Nimai is a Web Developer from Brisbane, Australia specialising in HTML, CSS, JavaScript, React and Redux' },
+        { name: 'keywords', content: 'react, redux, html, css, javascript, web, web developer, developer, front-end, gatsby' },
       ]}
     />
-    <Header />
+    <Header data={data} />
     <div
       style={{
         margin: '0 auto',
@@ -26,10 +26,21 @@ const TemplateWrapper = ({ children }) => (
       {children()}
     </div>
   </div>
-)
+);
 
 TemplateWrapper.propTypes = {
   children: PropTypes.func,
-}
+};
 
-export default TemplateWrapper
+export default TemplateWrapper;
+
+export const query = graphql`
+  query HeaderMeta {
+    site {
+      siteMetadata {
+        title
+        desc
+      } 
+    }
+  }
+`;
