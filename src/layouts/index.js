@@ -1,9 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'react-emotion';
 import Helmet from 'react-helmet';
+import Img from 'gatsby-image';
 
 import Header from '../components/Header';
-import './index.css';
+
+const ContentWrapper = styled('section')`
+  margin: 0 auto;
+  max-width: 960px;
+  padding: 1.5rem 1.0875rem 1.45rem;
+`
 
 const TemplateWrapper = ({ children, data }) => (
   <div>
@@ -15,16 +22,9 @@ const TemplateWrapper = ({ children, data }) => (
       ]}
     />
     <Header data={data} />
-    <div
-      style={{
-        margin: '0 auto',
-        maxWidth: 960,
-        padding: '0px 1.0875rem 1.45rem',
-        paddingTop: 0,
-      }}
-    >
+    <ContentWrapper>
       {children()}
-    </div>
+    </ContentWrapper>
   </div>
 );
 
@@ -41,6 +41,11 @@ export const query = graphql`
         title
         desc
       } 
+    },
+    background: imageSharp(id: {regex: "/bg.jpeg/"}) {
+      sizes(maxWidth: 1240) {
+        ...GatsbyImageSharpSizes
+      }
     }
   }
 `;
