@@ -7,7 +7,6 @@ const IndexPage = ({ data }) => (
     <p>Welcome to your new Gatsby site.</p>
     <p>Now go build something great.</p>
     <p>{data.site.siteMetadata.desc}</p>
-    <h2>Posts</h2>
   </div>
 );
 

@@ -4,11 +4,10 @@ module.exports = {
     desc: 'Portfolio and Blog for Nimai Walsh - Web Developer',
   },
   plugins: [
-    'gatsby-plugin-react-helmet', 
-    'gatsby-plugin-emotion', 
+    'gatsby-plugin-react-helmet',
+    'gatsby-plugin-emotion',
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
-    'gatsby-transformer-remark',
     {
       resolve: 'gatsby-plugin-typography',
       options: {
@@ -27,6 +26,17 @@ module.exports = {
       options: {
         name: 'files',
         path: `${__dirname}/src`,
+      },
+    },
+    {
+      resolve: 'gatsby-transformer-remark',
+      options: {
+        //Place the end tag in markdown file to create excerpt
+        excerpt_separator: `<!-- end -->`,
+        plugins: [
+          //Used for code blocks
+          'gatsby-remark-prismjs',
+        ],
       },
     },
   ],

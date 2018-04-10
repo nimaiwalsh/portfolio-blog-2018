@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import Link from 'gatsby-link';
 import styled from 'react-emotion';
 import Img from 'gatsby-image';
@@ -17,7 +18,7 @@ const NavbarWrapper = styled('div')`
   position: fixed;
   width: 100%;
   z-index: 1;
-`
+`;
 
 const NavbarContainer = styled('div')`
   margin: 0 auto;
@@ -35,7 +36,7 @@ const NavbarContainer = styled('div')`
   }
 
   a {
-    color: #FFF;
+    color: #fff;
   }
 
   ul {
@@ -55,41 +56,48 @@ const headerImage = {
   left: 0,
   width: '100%',
   height: '100%',
+};
+
+export default class Header extends Component {
+  componentDidUpdate(prevProps, prevState) {
+    //If it is not the homepage, do some animation
+    if(this.props.location.pathname === '/') {
+      console.log(this.wrapper);
+    } else {
+
+    }
+  }
+
+  render() {
+    const { data } = this.props;
+    return (
+      //ref prop - Attach the reference of the HeaderWrapper element in the DOM to this.wrapper
+      <HeaderWrapper ref={(wrapper) => this.wrapper = ReactDOM.findDOMNode(wrapper)} >
+        <NavbarWrapper>
+          <NavbarContainer>
+            <Link to="/">
+              <img src={logo} alt="Nimai Walsh Logo" />
+            </Link>
+            <nav>
+              <ul>
+                <li>
+                  <Link to="/">Home</Link>
+                </li>
+                <li>
+                  <Link to="/work">Work</Link>
+                </li>
+                <li>
+                  <Link to="/about">About</Link>
+                </li>
+                <li>
+                  <Link to="/contact">Contact</Link>
+                </li>
+              </ul>
+            </nav>
+          </NavbarContainer>
+        </NavbarWrapper>
+        <Img style={headerImage} sizes={data.headerImage.sizes} />
+      </HeaderWrapper>
+    );
+  }
 }
-
-const Header = ({data}) => (
-
-  <HeaderWrapper>
-    <NavbarWrapper>
-      <NavbarContainer>
-        <Link
-          to="/"
-        >
-          <img src={logo} alt="Nimai Walsh Logo" />
-        </Link>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/work">Work</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
-              <Link to="/contact">Contact</Link>
-            </li>
-          </ul>
-        </nav>
-      </NavbarContainer>
-    </NavbarWrapper>
-    <Img
-      style={headerImage}
-      sizes={data.background.sizes} 
-    />
-  </HeaderWrapper>
-);
-
-export default Header;
