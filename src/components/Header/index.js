@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Link from 'gatsby-link';
-import styled from 'react-emotion';
+import styled, { keyframes } from 'react-emotion';
 import Img from 'gatsby-image';
 
 import logo from '../../images/nimaiwalsh-logo-aqua-white.svg';
@@ -9,7 +9,41 @@ import logo from '../../images/nimaiwalsh-logo-aqua-white.svg';
 const HeaderWrapper = styled('div')`
   overflow: hidden;
   position: relative;
-  height: 60vh;
+  height: ${({ isHome }) => (isHome ? '100vh' : '20vh')};
+`;
+
+const fadein = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`
+const HeaderContent = styled('div')`
+  display: flex;
+  align-items: center;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+  color: #ffffff;
+
+  div {
+    text-align
+  }
+
+  span {
+    opacity: 0;
+    animation: ${fadein} 3s ease both;
+    animation-delay: 1s;
+  }
+
+  h1 {
+    opacity: 0;
+    animation: ${fadein} 3s ease both;
+    animation-delay: 1.5s;
+    color: #94E0D1;
+  }
 `;
 
 const NavbarWrapper = styled('div')`
@@ -17,7 +51,7 @@ const NavbarWrapper = styled('div')`
   background-color: rgba(37, 75, 128, 0.8);
   position: fixed;
   width: 100%;
-  z-index: 1;
+  z-index: 2;
 `;
 
 const NavbarContainer = styled('div')`
@@ -60,19 +94,36 @@ const headerImage = {
 
 export default class Header extends Component {
   componentDidUpdate(prevProps, prevState) {
-    //If it is not the homepage, do some animation
-    if(this.props.location.pathname === '/') {
-      console.log(this.wrapper);
-    } else {
-
+    const { location } = this.props;
+    //Do not animate if you are already on the same page
+    if (location.pathname !== prevProps.location.pathname) {
+      //If it is not the homepage, animate the header by making it smaller
+      if (this.props.location.pathname === '/') {
+        this.wrapper.animate([{ height: '20vh' }, { height: '100vh' }], {
+          duration: 500,
+          fill: 'forwards',
+          easing: 'cubic-bezier(0.86, 0, 0.07, 1)',
+          iterations: 1,
+        });
+      } else {
+        this.wrapper.animate([{ height: '100vh' }, { height: '20vh' }], {
+          duration: 500,
+          fill: 'forwards',
+          easing: 'cubic-bezier(0.86, 0, 0.07, 1)',
+          iterations: 1,
+        });
+      }
     }
   }
 
   render() {
-    const { data } = this.props;
+    const { data, location } = this.props;
     return (
       //ref prop - Attach the reference of the HeaderWrapper element in the DOM to this.wrapper
-      <HeaderWrapper ref={(wrapper) => this.wrapper = ReactDOM.findDOMNode(wrapper)} >
+      <HeaderWrapper
+        isHome={location.pathname === '/'}
+        ref={wrapper => (this.wrapper = ReactDOM.findDOMNode(wrapper))}
+      >
         <NavbarWrapper>
           <NavbarContainer>
             <Link to="/">
@@ -81,13 +132,13 @@ export default class Header extends Component {
             <nav>
               <ul>
                 <li>
-                  <Link to="/">Home</Link>
-                </li>
-                <li>
                   <Link to="/work">Work</Link>
                 </li>
                 <li>
                   <Link to="/about">About</Link>
+                </li>
+                <li>
+                  <Link to="/journal">Journal</Link>
                 </li>
                 <li>
                   <Link to="/contact">Contact</Link>
@@ -96,6 +147,12 @@ export default class Header extends Component {
             </nav>
           </NavbarContainer>
         </NavbarWrapper>
+        <HeaderContent>
+          <div>
+            <span>Hello beautiful earth</span>
+            <h1>Nimai Walsh - Web Developer</h1>
+          </div>
+        </HeaderContent>
         <Img style={headerImage} sizes={data.headerImage.sizes} />
       </HeaderWrapper>
     );

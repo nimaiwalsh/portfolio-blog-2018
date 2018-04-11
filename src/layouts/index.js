@@ -53,7 +53,7 @@ export const query = graphql`
     headerImage: imageSharp(id: { regex: "/bg.jpeg/" }) {
       sizes(
         maxWidth: 1240
-        duotone: { highlight: "#254B80", shadow: "#192550", opacity: 50 }
+        duotone: { highlight: "#FFFFFF", shadow: "#030303"}
       ) {
         ...GatsbyImageSharpSizes
       }
