@@ -5,6 +5,8 @@ import Helmet from 'react-helmet';
 import Img from 'gatsby-image';
 //CSS Theme for PrismJS code blocks
 import '../utils/prismjs-theme/prism.css';
+//Web Animations API Polyfill - makes web animations work across all browsers
+import 'web-animations-js';
 
 import Header from '../components/Header';
 
