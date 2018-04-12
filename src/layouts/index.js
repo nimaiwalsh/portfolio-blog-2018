@@ -51,10 +51,7 @@ export const query = graphql`
       }
     }
     headerImage: imageSharp(id: { regex: "/bg.jpeg/" }) {
-      sizes(
-        maxWidth: 1240
-        duotone: { highlight: "#FFFFFF", shadow: "#030303"}
-      ) {
+      sizes(maxWidth: 1240) {
         ...GatsbyImageSharpSizes
       }
     }

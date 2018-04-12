@@ -16,7 +16,7 @@ export default Journal;
 
 export const query = graphql`
   query PostList {
-    allMarkdownRemark {
+    allMarkdownRemark(sort: {fields: [frontmatter___date], order: DESC}) {
       edges {
         node {
           id

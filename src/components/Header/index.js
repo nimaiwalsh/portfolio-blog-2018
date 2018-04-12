@@ -10,6 +10,7 @@ const HeaderWrapper = styled('div')`
   overflow: hidden;
   position: relative;
   height: ${({ isHome }) => (isHome ? '100vh' : '20vh')};
+  background-color: #000;
 `;
 
 const fadein = keyframes`
@@ -68,21 +69,27 @@ const NavbarContainer = styled('div')`
     height: 80px;
     margin: 0;
   }
+`;
 
-  a {
-    color: #fff;
-  }
-
+const MainNav = styled('nav')`
   ul {
     margin: 0;
+    list-style: none;
+    a {
+      color: #fff;
+      text-decoration: none;
+      &:hover {
+        border-bottom: 4px solid #94E0D1;
+      }
+    }
+    li {
+      display: inline-block;
+      padding: 10px;
+      margin: 0;
+    }
   }
 
-  nav > ul > li {
-    display: inline-block;
-    padding: 10px;
-    margin: 0;
-  }
-`;
+`
 
 const headerImage = {
   position: 'absolute',
@@ -90,6 +97,7 @@ const headerImage = {
   left: 0,
   width: '100%',
   height: '100%',
+  opacity: 0.6
 };
 
 export default class Header extends Component {
@@ -129,7 +137,7 @@ export default class Header extends Component {
             <Link to="/">
               <img src={logo} alt="Nimai Walsh Logo" />
             </Link>
-            <nav>
+            <MainNav>
               <ul>
                 <li>
                   <Link to="/work">Work</Link>
@@ -144,7 +152,7 @@ export default class Header extends Component {
                   <Link to="/contact">Contact</Link>
                 </li>
               </ul>
-            </nav>
+            </MainNav>
           </NavbarContainer>
         </NavbarWrapper>
         <HeaderContent>
