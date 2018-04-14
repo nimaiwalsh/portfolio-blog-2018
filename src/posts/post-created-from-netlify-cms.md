@@ -5,4 +5,4 @@ image: /static/assets/wiki-viewer-min.jpeg
 ---
 New post created from Netlify and includes an image.
 
-![Example image added using Netlify cms]()
+![Example image from netlify](/static/assets/wiki-viewer-min.jpeg)
