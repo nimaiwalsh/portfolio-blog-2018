@@ -3,6 +3,10 @@ import React, { Component } from 'react';
 class PostPage extends Component {
   render() {
     const { data } = this.props;
+    //Loading status
+    if (!data ) {
+      return(<article>Loading...</article>)
+    }
     console.log(data)
     return (
       <article>

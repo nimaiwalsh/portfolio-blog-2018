@@ -8,6 +8,7 @@ backend:
 
 #where all the media is to be stored
 media_folder: static/assets
+public_folder: /assets
 
 collections:
   # type of collection
