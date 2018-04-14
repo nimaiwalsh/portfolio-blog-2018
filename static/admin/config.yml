@@ -1,7 +1,12 @@
-# Configures Netflify CMS
-backend: 
-  name: test-repo
+# Configuration Netflify CMS
 
+#define the backend used
+backend: 
+  # name: test-repo --development
+  name: github
+  repo: nimaiwalsh/portfolio-blog-2018
+
+#where all the media is to be stored
 media_folder: static/assets
 
 collections:
