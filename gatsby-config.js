@@ -8,6 +8,7 @@ module.exports = {
     'gatsby-plugin-emotion',
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
+    'gatsby-plugin-netlify-cms',
     {
       resolve: 'gatsby-plugin-typography',
       options: {
